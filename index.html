@@ -1,34 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Happy Birthday 🎉</title>
+    <title>Happy Birthday Januca 🎉</title>
+
     <style>
         body {
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
-            color: white;
+            margin: 0;
             text-align: center;
             font-family: Arial, sans-serif;
-            padding-top: 100px;
+            overflow: hidden;
+            animation: bgChange 10s infinite alternate;
         }
+
+        @keyframes bgChange {
+            0% { background: #ff9a9e; }
+            25% { background: #fad0c4; }
+            50% { background: #fbc2eb; }
+            75% { background: #a18cd1; }
+            100% { background: #ff758c; }
+        }
+
         h1 {
-            font-size: 60px;
+            margin-top: 60px;
+            font-size: 50px;
         }
-        p {
-            font-size: 24px;
+
+        .cake {
+            font-size: 80px;
+            animation: bounce 1s infinite;
         }
-        .btn {
-            background: white;
-            color: #ff4e8a;
+
+        @keyframes bounce {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
             padding: 15px 30px;
+            font-size: 18px;
             border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        #secret {
+            display: none;
+            font-size: 22px;
+            margin-top: 30px;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: red;
+            top: -10px;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
         }
     </style>
 </head>
+
 <body>
-    <h1>🎂 Happy Birthday, [Name]! 🎉</h1>
-    <p>Wishing you a day filled with love, laughter, and cake! 🥳</p>
-    <a class="btn" href="#">Click for a Surprise 💝</a>
+
+    <h1>🎂 HAPPY BIRTHDAY JANUCA 🎉</h1>
+
+    <p>Breaking News 📰</p>
+    <p>Januca has successfully survived another year!</p>
+
+    <div class="cake">🎂</div>
+
+    <button onclick="celebrate()">Click for Maximum Chaos 🎊</button>
+
+    <div id="secret">
+        😂 You are not getting older.
+        <br><br>
+        You are just becoming a vintage collectible.
+        <br><br>
+        Thank you for being the funniest human I know.
+        <br><br>
+        Stay chaotic. Stay iconic. Stay JANUCA. 💛
+    </div>
+
+    <script>
+        function celebrate() {
+            document.getElementById("secret").style.display = "block";
+
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement("div");
+                confetti.classList.add("confetti");
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.backgroundColor =
+                    ["#ff4d6d","#ffd166","#06d6a0","#118ab2","#ef476f"]
+                    [Math.floor(Math.random()*5)];
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+    </script>
+
 </body>
 </html>
